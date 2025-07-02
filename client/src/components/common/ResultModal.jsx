@@ -1,7 +1,7 @@
 const ResultModal = ({ title, content, callbackFn }) => {
   return (
     <div
-      className={`fixed top-0 left-0 z--[1055] flex h-full w-full justify-center bg-black bg-opacity-90`}
+      className={`fixed top-0 left-0 z-[1055] flex h-full w-full justify-center bg-black/30`}
       onClick={() => {
         if (callbackFn) {
           callbackFn();
