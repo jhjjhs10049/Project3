@@ -16,6 +16,7 @@ const initState = {
 // AddComponent는 새로운 Todo 항목을 추가하는 컴포넌트
 const AddComponent = () => {
   // initState를 사용하여 todo 상태를 초기화
+  // ...은 객체를 복사해서 초기값으로 설정
   const [todo, setTodo] = useState({ ...initState });
 
   // 결과 데이터가 있는 경우에는 ResultModal을 보여준다.

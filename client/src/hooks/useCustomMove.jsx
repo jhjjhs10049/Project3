@@ -26,8 +26,8 @@ const useCustomMove = () => {
   // 기본 쿼리 문자열 생성
   const queryDefault = createSearchParams({ page, size }).toString();
 
-  //리스트 페이지로 이동합니다.
-  //전달된 pageParam이 있으면 해당 값으로 쿼리 문자열을 만들고,
+  // 리스트 페이지로 이동합니다.
+  // 전달된 pageParam이 있으면 해당 값으로 쿼리 문자열을 만들고,
   // 없으면 기존 쿼리(queryDefault)를 사용
   const moveToList = (pageParam) => {
     let queryStr = "";
