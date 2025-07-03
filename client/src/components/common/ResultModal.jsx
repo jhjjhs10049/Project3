@@ -1,14 +1,13 @@
 const ResultModal = ({ title, content, callbackFn }) => {
   return (
-    <div
-      className={`fixed top-0 left-0 z-[1055] flex h-full w-full justify-center bg-black/30`}
-      onClick={() => {
-        if (callbackFn) {
-          callbackFn();
-        }
-      }}
-    >
-      {/* 모달 본문 - 클릭 이벤트 버블링 차단! 책 예제대로 하면 모달창 이 안닫힘*/}
+    // 콜백설명
+    // 부모객체에서 result 값이 있으면 ResultModal 컴포넌트를 보여주고 없으면 안보여주게 되어있음
+    // 부모객체에서 callbackFn={closeModal}으로 ResultModal 컴포넌트에서 callbackFn을 호출하면 closeModal 함수가 실행됨
+    // closeModal 은 result 값을 초기화하여 ResultModal 컴포넌트가 사라지게함
+
+    // 모달창의 흐린 검은배경
+    <div className={`fixed top-0 left-0 z-[1055] flex h-full w-full justify-center bg-black/30`}>
+
       <div className="absolute bg-white shadow dark:bg-gray-700 opacity-100 w-1/4 rounded mt-10 mb-10 px-6 min-w-[600px]">
         <div className="justify-center bg-warning-400 mt-6 text-2xl border-b-4 border-gray-500">
           {title}

@@ -29,7 +29,20 @@ public class TodoServiceImpl implements TodoService {
 
     private final TodoRepository todoRepository;
 
+    // 1. 단일 항목 조회 (GET)
+    @Override
+    public TodoDTO get(Long tno) {
 
+        Optional<Todo> result = todoRepository.findById(tno); // ← todoRepository에서 findById() (기본)메서드 사용
+
+        Todo todo = result.orElseThrow();
+
+        // ModelMapper를 사용하여 Todo라는 엔티티를 TodoDTO라는 DTO로 변환
+        // ModelMapper는 객체 간의 필드 매핑을 자동으로 처리해줌 (dto와 entity 간의 변환을 쉽게 해줌)
+        TodoDTO dto = modelMapper.map(todo, TodoDTO.class);
+
+        return dto;
+    }
     @Override
     public Long register(TodoDTO todoDTO) {
 
@@ -40,18 +53,6 @@ public class TodoServiceImpl implements TodoService {
         Todo savedTodo = todoRepository.save(todo);
 
         return savedTodo.getTno();
-    }
-
-    @Override
-    public TodoDTO get(Long tno) {
-
-        Optional<Todo> result = todoRepository.findById(tno);
-
-        Todo todo = result.orElseThrow();
-
-        TodoDTO dto = modelMapper.map(todo, TodoDTO.class);
-
-        return dto;
     }
 
     @Override
@@ -75,6 +76,7 @@ public class TodoServiceImpl implements TodoService {
     @Override
     public PageResponseDTO<TodoDTO> list(PageRequestDTO pageRequestDTO) {
         Pageable pageable = PageRequest.of(
+                // 0부터 시작하는 페이지 번호를 위해 -1을 해줌
                 pageRequestDTO.getPage() -1,
                 pageRequestDTO.getSize(),
                 Sort.by("tno").descending());

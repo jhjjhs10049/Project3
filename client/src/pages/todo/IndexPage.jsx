@@ -57,6 +57,7 @@ const IndexPage = () => {
             │    ├── <Outlet />  ← 자식 컴포넌트가 여기에 렌더됨
             │
             ├── ListComponent (자식 컴포넌트, URL이 /list일 때)
+            │   자식컴포넌트 read, modify, delete 기능을 가지고 있음
             또는
             ├── AddComponent (자식 컴포넌트, URL이 /add일 때)
 

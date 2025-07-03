@@ -1,7 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="2c48bfe2-ef22-4c7d-9b35-b78758ec1fec" name="변경" comment="" />
+    <list default="true" id="2c48bfe2-ef22-4c7d-9b35-b78758ec1fec" name="변경" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/api/todoApi.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/api/todoApi.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/common/ResultModal.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/common/ResultModal.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/todo/AddComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/todo/AddComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/todo/ModifyComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/todo/ModifyComponent.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/server/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/zerock/mallapi/config/RootConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/zerock/mallapi/config/RootConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/zerock/mallapi/controller/TodoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/zerock/mallapi/controller/TodoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/zerock/mallapi/dto/PageResponseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/zerock/mallapi/dto/PageResponseDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/zerock/mallapi/repository/TodoRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/zerock/mallapi/repository/TodoRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/zerock/mallapi/service/TodoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/zerock/mallapi/service/TodoServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/구조.xlsx" beforeDir="false" afterPath="$PROJECT_DIR$/구조.xlsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -10,10 +27,10 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "customColor": "",
-  "associatedIndex": 5
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 5
+}</component>
   <component name="ProjectId" id="2zGXUIJnt79vj6hyc87SS2kuRq8" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -24,7 +41,8 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "master",
-    "kotlin-language-version-configured": "true"
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Administrator/Desktop/GIT/Project3/server"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />

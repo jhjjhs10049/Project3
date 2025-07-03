@@ -22,8 +22,8 @@ public class PageResponseDTO<E> {
         this.dtoList = dtoList;
         this.pageRequestDTO = pageRequestDTO;
         this.totalCount = (int)totalCount;
-
-        int end = (int)(Math.ceil(pageRequestDTO.getPage() / 10.0)) * 10;
+        // ceil은 무조건 올림을 의미
+        int end = (int)(Math.ceil(pageRequestDTO.getPage() / 10.0)) * 10;  
 
         int start = end - 9;
 

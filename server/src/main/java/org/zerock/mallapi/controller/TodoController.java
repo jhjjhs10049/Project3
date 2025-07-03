@@ -18,16 +18,20 @@ public class TodoController {
 
     private final TodoService service;
 
+    // 1. 단일 항목 조회 (GET)
     @GetMapping("/{tno}")
     public TodoDTO get(@PathVariable(name = "tno") Long tno){
-        return service.get(tno);
+        return service.get(tno); // ← 여기서 TodoService 호출
     }
 
-
+    // 2. 리스트 조회 (GET with params)
     @GetMapping("/list")
+    // PageResponseDTO는 페이지네이션을 정의해주고, TodoDTO를 리스트화하여 내용을 저장함
+    // PageRequestDTO는 url의 쿼리스트링을 받아서 pageRequestDTO로 변환하여 저장함
+    // 마지막에는 PageResponseDTO에서 저장된 데이터와함께 pageRequestDTO에 저장된 쿼리스트링을 서비스단으로 전달함
     public PageResponseDTO<TodoDTO> list (PageRequestDTO pageRequestDTO){
         log.info(pageRequestDTO);
-        return service.list(pageRequestDTO);
+        return service.list(pageRequestDTO); // ← 여기서 TodoService 호출
     }
 
     @PostMapping("/")
@@ -43,6 +47,7 @@ public class TodoController {
     @PutMapping("/{tno}")
     public Map<String, String> modify(
             @PathVariable(name="tno") Long tno,
+            // json 형태로 요청 본문에 TodoDTO를 받음
             @RequestBody TodoDTO todoDTO) {
 
         todoDTO.setTno(tno);

@@ -19,7 +19,6 @@ const AddComponent = () => {
   // ...은 객체를 복사해서 초기값으로 설정
   const [todo, setTodo] = useState({ ...initState });
 
-  // 결과 데이터가 있는 경우에는 ResultModal을 보여준다.
   const [result, setResult] = useState(null); //등록 결과 상태
 
   const { moveToList } = useCustomMove(); // 페이지 이동 커스텀 훅
@@ -38,7 +37,8 @@ const AddComponent = () => {
       .then((result) => {
         console.log(result);
 
-        setResult(result.TNO); // 등록된 항목 고유 번호(TNO)를 상태에 저장
+        // callback 함수의 result값에 TNO를 저장 더이상 null이 아니게 됨으로 자동으로 모달창이 열림
+        setResult(result.TNO);
         setTodo({ ...initState }); // 입력 필드 초기화
       })
       .catch((e) => {
@@ -47,17 +47,15 @@ const AddComponent = () => {
   };
 
   // 모달 닫기 함수
-  // ResultModal에서 호출되어 등록 결과를 초기화하고 목록으로 이동
   // moveToList()를 호출하여 목록 페이지로 이동
   const closeModal = () => {
-    setResult(null);
     moveToList(); //moveToList() 호출
   };
 
   return (
     <div className="border-2 border-sky-200 mt-10 m-2 p-4">
       {/* 모달 처리 (삼항 연산자)*/}
-      {/* 등록결곽가 있으면 모달을 보여줌 */}
+      {/* result 값이 있으면 ResultModal 컴포넌트 보여줌 */}
       {result ? (
         <ResultModal
           title={"Add Result"}

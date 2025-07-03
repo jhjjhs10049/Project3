@@ -36,6 +36,7 @@ const ModifyComponent = ({ tno }) => {
   const handleClickedModify = () => {
     putOne(todo).then((data) => {
       console.log("modify result: " + data);
+      // callback 함수의 result값에 Modified를 저장 더이상 null이 아니게 됨으로 자동으로 모달창이 열림
       setResult("Modified");
     });
   };
@@ -45,6 +46,7 @@ const ModifyComponent = ({ tno }) => {
   const handleClickDelete = () => {
     deleteOne(tno).then((data) => {
       console.log("delete result: " + data);
+      // callback 함수의 result값에 Deleted를 저장 더이상 null이 아니게 됨으로 자동으로 모달창이 열림
       setResult("Deleted");
     });
   };
@@ -52,11 +54,11 @@ const ModifyComponent = ({ tno }) => {
   //모달 창이 close될때
   const closeModal = () => {
     if (result === "Deleted") {
-      moveToList();
       // 삭제시 목록으로 이동
+      moveToList();
     } else {
-      moveToRead(tno);
       // 수정시 해당 tno페이지의 상세보기로 이동
+      moveToRead(tno);
     }
   };
 
@@ -74,7 +76,7 @@ const ModifyComponent = ({ tno }) => {
   return (
     <div className="border-2 border-sky-200 mt-10 m- p-4">
       {/* 모달 처리 (삼항 연산자)*/}
-      {/* 등록결과가 있으면 모달을 보여줌 */}
+      {/* result 값이 있으면 ResultModal 컴포넌트 보여줌 */}
       {result ? (
         <ResultModal
           title={"처리결과"}
