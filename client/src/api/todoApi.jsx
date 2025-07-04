@@ -23,6 +23,7 @@ const prefix = `${API_SERVER_HOST}/api/todo`; //prefix는 모든 요청 URL의 �
 // axios를 사용하면 GET, POST, PUT, DELETE 등의 HTTP 메서드를 쉽게 사용할 수 있음
 
 // 1. 단일 항목 조회 (GET)
+// tno는 ListComponent.jsx의 onClick={() => moveToRead(todo.tno)} 실행시 만들어지며, 클릭한 해당 Todo 항목의 tno를 전달받음
 export const getOne = async (tno) => {
   // "http://localhost:8080/api/todo/1" 형태의 URL로 요청을 보내고,
   const res = await axios.get(`${prefix}/${tno}`); // ← get으로 TodoController 호출
@@ -31,31 +32,41 @@ export const getOne = async (tno) => {
 };
 
 // 2. 리스트 조회 (GET with params)
+// pageParam은 페이지 번호와 페이지 크기를 포함하는 객체로, 예: { page: 1, size: 10 }
+// ListComponent.jsx 에서 getList({ page, size })와 같이 getList() API를 호출하여 데이터를 받아올때
+// 언어상에서 getList(pageParam) 형태로 저장되는걸 이용해 사용하는것 따로 지정해주지 않아도 됨
+
 // pageParam 으로 쿼리스트링 즉, 페이지 정보(페이지 번호와 페이지 크기)를 받음
 export const getList = async (pageParam) => {
   // 받은 쿼리스트링을 page, size로 분리
   const { page, size } = pageParam;
   // axios는 이 params 객체를 자동으로 ?page=...&size=... 쿼리스트링으로 변환해줌
   const res = await axios.get(`${prefix}/list`, {
+    // ← get으로 TodoController 호출
     params: { page: page, size: size },
   });
   return res.data;
 };
 
 // 3. 항목 추가 (POST)
-export const postAdd = async (todoObj) => {
-  const res = await axios.post(`${prefix}/`, todoObj);
+// todo는 AddComponent.jsx 에서 const [todo, setTodo] = useState({ ...initState }) 와 같이
+// initState로 초기화된 상태를 가지고 있으며, title, writer, dueDate 등의 속성을 포함
+export const postAdd = async (todo) => {
+  const res = await axios.post(`${prefix}/`, todo); // ← post로 TodoController 호출
   return res.data;
 };
 
-// 항목 삭제 (DELETE)
-export const deleteOne = async (tno) => {
-  const res = await axios.delete(`${prefix}/${tno}`);
-  return res.data;
-};
-
-// 항목 수정 (PUT)
+// 4. 항목 수정 (PUT)
+// 기본값은 3번과 같이 초기화된 상태이지만, ModifyComponent.jsx 에서 getOne(tno)로 이미 해당되는 값을 가져왔기에
+// 수정상태에는 해당되는 todo 객체가 존재함
 export const putOne = async (todo) => {
-  const res = await axios.put(`${prefix}/${todo.tno}`, todo);
+  const res = await axios.put(`${prefix}/${todo.tno}`, todo); // ← put으로 TodoController 호출
+  return res.data;
+};
+
+// 5. 항목 삭제 (DELETE)
+// 4번과 같이 ModifyComponent.jsx 에서 getOne(tno)로 이미 해당되는 값을 가져옴   
+export const deleteOne = async (tno) => {
+  const res = await axios.delete(`${prefix}/${tno}`); // ← delete으로 TodoController 호출
   return res.data;
 };

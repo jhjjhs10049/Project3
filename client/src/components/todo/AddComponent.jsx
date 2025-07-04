@@ -15,8 +15,10 @@ const initState = {
 
 // AddComponent는 새로운 Todo 항목을 추가하는 컴포넌트
 const AddComponent = () => {
+  // useState 라는 리엑트 내장훅을 사용하여 상태 관리
   // initState를 사용하여 todo 상태를 초기화
   // ...은 객체를 복사해서 초기값으로 설정
+  // 결과적으론 todo는 title, writer, dueDate를 포함하는 객체가 되어 todoApi.js에서 사용되며 todoObj로도 사용해도된다.
   const [todo, setTodo] = useState({ ...initState });
 
   const [result, setResult] = useState(null); //등록 결과 상태

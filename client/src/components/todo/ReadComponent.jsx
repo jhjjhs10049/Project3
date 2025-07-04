@@ -23,6 +23,7 @@ const ReadComponent = ({ tno }) => {
   const { moveToList, moveToModify } = useCustomMove();
 
   // 컴포넌트가 마운트되거나 tno가 변경될 때 getOne() API를 호출하여 todo 데이터를 가져옴
+  // useEffect 훅은 내장 훅으로 의존성 배열에 있는 값이 바뀔 때마다 다시 실행됨
   // useEffect 훅을 사용하여 tno가 변경될 때마다 해당 Todo 항목의 데이터를 가져옴
   useEffect(() => {
     console.log("useEffect 실행됨, tno:", tno);

@@ -27,6 +27,7 @@ const ModifyComponent = ({ tno }) => {
   const { moveToList, moveToRead } = useCustomMove();
 
   // 컴포넌트가 마운트되거나 tno가 변경될 때 getOne() API를 호출하여 todo 데이터를 가져옴
+  // getOne() API를 호출하여 tno에 해당하는 todo 항목을 가져와 todo 상태에 저장
   useEffect(() => {
     getOne(tno).then((data) => setTodo(data));
   }, [tno]);
