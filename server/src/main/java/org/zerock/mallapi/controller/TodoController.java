@@ -29,7 +29,7 @@ public class TodoController {
         return service.get(tno); 
     }
 
-    // 2. 리스트 조회 (GET with params)
+    // 2. 리스트 조회 (GET)
     @GetMapping("/list")
     // pageRequestDTO 에 url의 쿼리스트링을 매핑해준다 (요청 역할)
     // PageResponseDTO DB에서 받아오는 값을 담는 DTO로, 서비스가 반환한 값을 클라이언트에 응답하는 역할 (응답 역할)

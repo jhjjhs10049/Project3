@@ -17,7 +17,7 @@ public interface TodoService {
     // TodoDTO는 응답 역할로 Repository에서 받아오는 값을 담는 DTO로, 컨트롤러로 보내줌 (응답 역할)
     TodoDTO get(Long tno); 
 
-    // 2. 리스트 조회 (GET with params)
+    // 2. 리스트 조회 (GET)
     // PageRequestDTO pageRequestDTO는 요청 역할로 pageRequestDTO(쿼리스트링)를 PageRequestDTO로 재선언후 Repository에 전달함 (요청 역할)
     // PageResponseDTO<TodoDTO>는 응답 역할로 Repository에서 받아오는 TodoDTO값을 담는 DTO로, PageResponseDTO로 맞추어 컨트롤러로 보내줌 (응답 역할)
     PageResponseDTO<TodoDTO> list (PageRequestDTO pageRequestDTO); 

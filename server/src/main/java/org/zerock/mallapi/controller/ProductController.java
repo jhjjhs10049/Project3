@@ -25,6 +25,21 @@ public class ProductController {
     private final CustomFileUtil fileUtil;
     private final ProductService productService;
 
+    // 1. 단일 항목 조회 (GET)
+    @GetMapping("/{pno}")
+    public ProductDTO get(@PathVariable(name = "pno") Long pno){
+        return productService.get(pno);
+    }
+
+    // 2. 리스트 조회 (GET)
+    @GetMapping("/list")
+    public PageResponseDTO<ProductDTO> list(PageRequestDTO pageRequestDTO){
+
+        log.info("list............" + pageRequestDTO);
+
+        return productService.getList(pageRequestDTO);
+    }
+    // 3. 상품 등록 (POST)
     @PostMapping("/")
     public Map<String, Long> register(ProductDTO productDTO){
 
@@ -43,31 +58,22 @@ public class ProductController {
         Long pno = productService.register(productDTO);
 
         //return Map.of("RESULT", "SUCCESS");
+
+        //DB에 데이터를 넣고나서 모달창이 조금더 오래 보이도록 하자
+        try{
+            Thread.sleep(1000); // 1초간 sleep...
+        }catch (InterruptedException e){
+            e.printStackTrace();
+        }
+
+
         return Map.of("result", pno);
     }
 
-    @GetMapping("/view/{fileName}")
-    public ResponseEntity<Resource> viewFileGET(@PathVariable String fileName){
-
-        return fileUtil.getFile(fileName);
-    }
-
-    @GetMapping("/list")
-    public PageResponseDTO<ProductDTO> list(PageRequestDTO pageRequestDTO){
-
-        log.info("list............" + pageRequestDTO);
-
-        return productService.getList(pageRequestDTO);
-    }
-
-    @GetMapping("/{pno}")
-    public ProductDTO read(@PathVariable(name = "pno") Long pno){
-        return productService.get(pno);
-    }
-
+    // 4. 상품 수정 (PUT)
     @PutMapping("/{pno}")
     public Map<String , String> modify(@PathVariable(name="pno") Long pno, ProductDTO productDTO){
-
+        log.info("modify : " + productDTO);
         productDTO.setPno(pno);
         //기존 상품의 정보 얻어오기
         ProductDTO oldProductDTO = productService.get(pno);
@@ -109,6 +115,7 @@ public class ProductController {
         return Map.of("RESULT", "SUCCESS");
     }
 
+    // 5. 상품 삭제 (DELETE)
     @DeleteMapping("/{pno}")
     public Map<String, String> remove(@PathVariable("pno") Long pno){
         //삭제 해야할 파일들 알아내기
@@ -122,5 +129,12 @@ public class ProductController {
 
         return Map.of("RESULT", "SUCCESS");
     }
+    // 상품 이미지를 웹브라우저에서 볼 수 있게 해주는 API
+     @GetMapping("/view/{fileName}")
+    public ResponseEntity<Resource> viewFileGET(@PathVariable String fileName){
+
+        return fileUtil.getFile(fileName);
+    }
+
 
 }

@@ -44,7 +44,7 @@ public class TodoServiceImpl implements TodoService {
         return dto;
     }
 
-    // 2. 리스트 조회 (GET with params)
+    // 2. 리스트 조회 (GET)
     @Override
     public PageResponseDTO<TodoDTO> list(PageRequestDTO pageRequestDTO) {
 
@@ -88,8 +88,14 @@ public class TodoServiceImpl implements TodoService {
         Todo savedTodo = todoRepository.save(todo);
         
         // Long 타입으로 반환되며, 저장된 todo의 tno 값을 반환
+
         return savedTodo.getTno();
     }
+        // 왜 tno 1개를 반환할때는 DTO를 사용하지 않는가?
+        // Todo 엔티티는 tno 값을 가지고 있기 때문에, Todo 엔티티에서 직접 tno 값을 가져와 반환 
+        //(즉 값1개만 필요할때는 get메서드를 사용하여 바로꺼내쓸수있음)
+        // 그럼 DTO는 왜쓰는가?
+        // TodoDTO는 여러 필드를 포함하고 있어, 전체 정보를 필요로 할 때 사용
 
     // 4. 항목 수정 (PUT)
     @Override

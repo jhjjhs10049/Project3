@@ -1,10 +1,11 @@
 const PageComponent = ({ serverData, movePage }) => {
   return (
     <div className="m-6 flex justify-center">
+      {" "}
       {/* 이전 페이지로 이동하는 버튼 */}
       {serverData.prev ? (
         <div
-          className="m-2 p-2 w-16 text-center  font-bold text-blue-400"
+          className="m-2 p-2 w-16 text-center font-bold text-blue-400 cursor-pointer hover:text-blue-600"
           onClick={() => movePage({ page: serverData.prevPage })}
         >
           {" "}
@@ -12,12 +13,12 @@ const PageComponent = ({ serverData, movePage }) => {
         </div>
       ) : (
         <></>
-      )}
+      )}{" "}
       {/* 페이지 번호들 */}
       {serverData.pageNumList.map((pageNum) => (
         <div
           key={pageNum}
-          className={`m-2 p-2 w-12  text-center rounded shadow-md text-white 
+          className={`m-2 p-2 w-12 text-center rounded shadow-md text-white cursor-pointer hover:opacity-80 
                     ${
                       serverData.current === pageNum
                         ? "bg-gray-500"
@@ -27,11 +28,11 @@ const PageComponent = ({ serverData, movePage }) => {
         >
           {pageNum}
         </div>
-      ))}
+      ))}{" "}
       {/* 다음 페이지로 이동하는 버튼 */}
       {serverData.next ? (
         <div
-          className="m-2 p-2 w-16 text-center font-bold text-blue-400"
+          className="m-2 p-2 w-16 text-center font-bold text-blue-400 cursor-pointer hover:text-blue-600"
           onClick={() => movePage({ page: serverData.nextPage })}
         >
           Next

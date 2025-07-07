@@ -35,7 +35,7 @@ public class CustomFileUtil {   // 데이터의 입출력을 담당
         File tempFolder = new File(uploadPath);
 
         if(tempFolder.exists() == false) {
-            tempFolder.mkdir(); //uplpad 폴더가 10초 정도 있다가 생긴다. 컴터마다 다를수 있다.
+            tempFolder.mkdir(); //upload 폴더가 10초 정도 있다가 생긴다. 컴퓨터마다 다를수 있다.
         }
 
         uploadPath = tempFolder.getAbsolutePath();

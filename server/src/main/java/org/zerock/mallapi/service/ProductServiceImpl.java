@@ -25,8 +25,18 @@ import java.util.stream.Collectors;
 @Transactional
 public class ProductServiceImpl implements ProductService{
 
-    private final ProductRepository productRepository;
+    private final ProductRepository productRepository; 
 
+    // 1. 단일 항목 조회 (GET)
+    @Override
+    public ProductDTO get(Long pno) {
+        Optional<Product> result = productRepository.selectOne(pno);
+        Product product = result.orElseThrow();
+        ProductDTO productDTO = entityToDTO(product);
+
+        return productDTO;
+    }
+    // 2. 리스트 조회 (GET)
     @Override
     public PageResponseDTO<ProductDTO> getList(PageRequestDTO pageRequestDTO) {
 
@@ -67,6 +77,7 @@ public class ProductServiceImpl implements ProductService{
                 .build();
     }
 
+    // 3. 상품 등록 (POST)
     @Override
     public Long register(ProductDTO productDTO) {
         Product product = dtoToEntity(productDTO);
@@ -95,16 +106,6 @@ public class ProductServiceImpl implements ProductService{
 
         return product;
     }
-
-    @Override
-    public ProductDTO get(Long pno) {
-        Optional<Product> result = productRepository.selectOne(pno);
-        Product product = result.orElseThrow();
-        ProductDTO productDTO = entityToDTO(product);
-
-        return productDTO;
-    }
-
     private ProductDTO entityToDTO(Product product){
         ProductDTO productDTO = ProductDTO.builder()
                 .pno(product.getPno())
@@ -126,6 +127,7 @@ public class ProductServiceImpl implements ProductService{
         return productDTO;
     }
 
+    // 4. 상품 수정 (PUT)
     @Override
     public void modify(ProductDTO productDTO) {
         //step1 read
@@ -152,6 +154,7 @@ public class ProductServiceImpl implements ProductService{
         productRepository.save(product);
     }
 
+    // 5. 상품 삭제 (DELETE)
     @Override
     public void remove(Long pno) {
         productRepository.updateToDelete(pno, true);

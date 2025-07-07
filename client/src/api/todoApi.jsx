@@ -31,7 +31,7 @@ export const getOne = async (tno) => {
   return res.data;
 };
 
-// 2. 리스트 조회 (GET with params)
+// 2. 리스트 조회 (GET)
 // pageParam은 페이지 번호와 페이지 크기를 포함하는 객체로, 예: { page: 1, size: 10 }
 // ListComponent.jsx 에서 getList({ page, size })와 같이 getList() API를 호출하여 데이터를 받아올때
 // 언어상에서 getList(pageParam) 형태로 저장되는걸 이용해 사용하는것 따로 지정해주지 않아도 됨
