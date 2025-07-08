@@ -41,8 +41,7 @@ export const getList = async (pageParam) => {
   // 받은 쿼리스트링을 page, size로 분리
   const { page, size } = pageParam;
   // axios는 이 params 객체를 자동으로 ?page=...&size=... 쿼리스트링으로 변환해줌
-  const res = await axios.get(`${prefix}/list`, {
-    // ← get으로 TodoController 호출
+  const res = await axios.get(`${prefix}/list`, { // ← get으로 TodoController 호출
     params: { page: page, size: size },
   });
   return res.data;

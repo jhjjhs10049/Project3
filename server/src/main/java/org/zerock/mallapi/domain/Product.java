@@ -26,7 +26,7 @@ public class Product {
     //@ElementCollection?
     //기본적으로 lazy_loading 방식으로 동작한다.
     //DB 에는 컬렉션 타입이 없다.
-    //@ElementCollection 은 값타입(Embededdable 또는 기본형)을 담고 있는 컬렉션을 매핑할때 사용
+    //@ElementCollection 은 값타입(EmbededAble 또는 기본형)을 담고 있는 컬렉션을 매핑할때 사용
     //엔티티에 포함된 컬렉션 값 타입(예: List<String>, Set<Integer>)을 DB에
     //별도의 테이블로 저장할 때 사용합니다.
     //@ElementCollection과 같이 하나의 엔티티가 여러 개의 객체를 추가적으로 담고 있을때는

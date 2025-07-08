@@ -13,6 +13,8 @@ public interface ProductService {
     Long register(ProductDTO productDTO);
     // 4. 상품 수정 (PUT)
     void modify(ProductDTO productDTO);
-    // 5. 상품 삭제 (DELETE)
-    void remove(Long pno);
+    // 5-1. 논리 삭제 (SOFT DELETE)
+    void softDelete(Long pno);
+    // 5-2. DB 삭제 (HARD DELETE)
+    void hardDelete(Long pno);
 }

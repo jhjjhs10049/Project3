@@ -3,17 +3,16 @@ import BasicLayout from "../../layouts/BasicLayout"
 import { useCallback } from "react"
 
 const IndexPage = () => {
-
     //useNavigate() : 상황에 따라 동적으로 데이터를 처리해서 이동하는 경우에 사용 (<Native>나 <Link> 대신에 사용하자)
     const navigate = useNavigate() 
 
     const handleClickList = useCallback(() => {
         navigate({ pathname : 'list'})
-    })
+    }, [navigate])
     
-        const handleClickAdd = useCallback(() => {
+    const handleClickAdd = useCallback(() => {
         navigate({ pathname : 'add'})
-    })
+    }, [navigate])
 
 
     return (

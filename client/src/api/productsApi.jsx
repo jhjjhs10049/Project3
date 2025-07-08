@@ -1,10 +1,12 @@
 import axios from "axios";
 import { API_SERVER_HOST } from "./todoApi";
 
+// http://localhost:8080/api/products
 const host = `${API_SERVER_HOST}/api/products`;
 
 // 1. 단일 항목 조회 (GET)
 export const getOne = async (tno) => {
+  // http://localhost:8080/api/products/${tno}
   const res = await axios.get(`${host}/${tno}`);
   return res.data;
 };
@@ -47,8 +49,14 @@ export const putOne = async (pno, product) => {
   return res.data;
 };
 
-// 5. 상품 삭제 (DELETE)
-export const deleteOne = async (pno) => {
-  const res = await axios.delete(`${host}/${pno}`);
+// 5-1. 논리 삭제 (SOFT DELETE)
+export const softDelete = async (pno) => {
+  const res = await axios.delete(`${host}/soft/${pno}`);
+  return res.data;
+};
+
+// 5-2. DB 삭제 (HARD DELETE)
+export const hardDelete = async (pno) => {
+  const res = await axios.delete(`${host}/hard/${pno}`);
   return res.data;
 };

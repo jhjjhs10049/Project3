@@ -13,7 +13,7 @@ const initState = {
   pageRequestDTO: null,
   prev: false,
   next: false,
-  totoalCount: 0,
+  totalCount: 0,
   prePage: 0, //이전 페이지 번호, 0 이면 이전 페이지가 없거나 초기 상태 일때 0
   nextPage: 0,
   totalPage: 0,
@@ -45,7 +45,7 @@ const ListComponent = () => {
   return (
     <div className="border-2 border-blue-100 mt-10 mr-2 ml-2">
       {fetching ? <FetchingModal /> : <></>}{" "}
-      {/* fetching 의 값이 true/fasle 일경우 fetchingModal 을 보이게 할지 여부를 설정*/}
+      {/* fetching 의 값이 true/false 일경우 fetchingModal 을 보이게 할지 여부를 설정*/}
       <div className="flex flex-wrap mx-auto p-6">
         {serverData.dtoList.map((product) => (
           //div 의 key 속성 : React가 각 요소를 고유하게 식별하기 위해 필요, key의 값은 고유하고 안정적인 값을 사용하자(예:DB id)

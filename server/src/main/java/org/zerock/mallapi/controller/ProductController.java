@@ -26,7 +26,7 @@ public class ProductController {
     private final ProductService productService;
 
     // 1. 단일 항목 조회 (GET)
-    @GetMapping("/{pno}")
+    @GetMapping("/{pno}")   
     public ProductDTO get(@PathVariable(name = "pno") Long pno){
         return productService.get(pno);
     }
@@ -74,12 +74,15 @@ public class ProductController {
     @PutMapping("/{pno}")
     public Map<String , String> modify(@PathVariable(name="pno") Long pno, ProductDTO productDTO){
         log.info("modify : " + productDTO);
-        productDTO.setPno(pno);
+        
         //기존 상품의 정보 얻어오기
         ProductDTO oldProductDTO = productService.get(pno);
 
         //기존의 파일들 (DB에 존재하는 파일들 - 수정 과정에서 삭제되었을 수 있음)
         List<String> oldFileNames = oldProductDTO.getUploadFileNames();
+
+        // 수정할 상품의 pno 를 DTO 에 설정
+        productDTO.setPno(pno);
 
         // 새로 업로드 해야 하는 파일들
         List<MultipartFile> files = productDTO.getFiles();
@@ -114,23 +117,40 @@ public class ProductController {
         }
         return Map.of("RESULT", "SUCCESS");
     }
-
-    // 5. 상품 삭제 (DELETE)
-    @DeleteMapping("/{pno}")
-    public Map<String, String> remove(@PathVariable("pno") Long pno){
-        //삭제 해야할 파일들 알아내기
+    // 5-1. 논리 삭제 (SOFT DELETE)
+    @DeleteMapping("/soft/{pno}")
+    public Map<String, String> softDelete(@PathVariable("pno") Long pno){
+        
+        // get 메소드로 기존의 사진 리스트를 oldFileNames 에 저장
         List<String> oldFileNames = productService.get(pno).getUploadFileNames();
 
         //DB 에서 지우기 (실제로 지워지는게 아니고 DB의 del_flag 의 값을 0에서 1로 변경한다.)
-        productService.remove(pno);
+        productService.softDelete(pno);
 
         //서버에 있는 upload 폴더안에 파일 삭제(실제 서버에서 삭제 된다.)
         fileUtil.deleteFiles(oldFileNames);
 
         return Map.of("RESULT", "SUCCESS");
     }
-    // 상품 이미지를 웹브라우저에서 볼 수 있게 해주는 API
-     @GetMapping("/view/{fileName}")
+    // 5-2. DB 삭제 (HARD DELETE)
+    @DeleteMapping("/hard/{pno}")
+    public Map<String, String> hardDelete(@PathVariable("pno") Long pno){
+        
+        // get 메소드로 기존의 사진 리스트를 oldFileNames 에 저장
+        List<String> oldFileNames = productService.get(pno).getUploadFileNames();
+
+        //DB 에서 지우기 (실제로 지움)
+        productService.hardDelete(pno);
+
+        //서버에 있는 upload 폴더안에 파일 삭제(실제 서버에서 삭제 된다.)
+        fileUtil.deleteFiles(oldFileNames);
+
+        return Map.of("RESULT", "SUCCESS");
+    }
+
+    // 6. 상품 이미지를 웹브라우저에서 볼 수 있게 해주는 API
+    // src 태그에서 GET방식으로 호출되는데 /view/{fileName} 와 URL이 매핑되기에 viewFileGET() 메소드가 호출된다.
+    @GetMapping("/view/{fileName}")
     public ResponseEntity<Resource> viewFileGET(@PathVariable String fileName){
 
         return fileUtil.getFile(fileName);
