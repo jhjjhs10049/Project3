@@ -1,4 +1,4 @@
-package org.zerock.mallapi.dto;
+package org.zerock.mallapi.dto.Todo;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;

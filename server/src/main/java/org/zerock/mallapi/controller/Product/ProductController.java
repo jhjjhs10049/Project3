@@ -1,4 +1,4 @@
-package org.zerock.mallapi.controller;
+package org.zerock.mallapi.controller.Product;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.zerock.mallapi.dto.PageRequestDTO;
 import org.zerock.mallapi.dto.PageResponseDTO;
-import org.zerock.mallapi.dto.ProductDTO;
-import org.zerock.mallapi.service.ProductService;
+import org.zerock.mallapi.dto.Product.ProductDTO;
+import org.zerock.mallapi.service.Product.ProductService;
 import org.zerock.mallapi.util.CustomFileUtil;
 
 import java.util.List;

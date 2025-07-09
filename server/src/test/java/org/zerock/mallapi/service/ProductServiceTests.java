@@ -6,7 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.zerock.mallapi.dto.PageRequestDTO;
 import org.zerock.mallapi.dto.PageResponseDTO;
-import org.zerock.mallapi.dto.ProductDTO;
+import org.zerock.mallapi.dto.Product.ProductDTO;
+import org.zerock.mallapi.service.Product.ProductService;
 
 import java.util.List;
 import java.util.UUID;

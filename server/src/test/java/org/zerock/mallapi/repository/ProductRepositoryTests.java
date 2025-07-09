@@ -10,7 +10,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.test.annotation.Commit;
 import org.springframework.transaction.annotation.Transactional;
-import org.zerock.mallapi.domain.Product;
+import org.zerock.mallapi.domain.Product.Product;
+import org.zerock.mallapi.repository.Product.ProductRepository;
 
 import java.util.Arrays;
 import java.util.Optional;

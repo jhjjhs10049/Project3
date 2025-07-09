@@ -1,4 +1,4 @@
-package org.zerock.mallapi.domain;
+package org.zerock.mallapi.domain.Product;
 
 import jakarta.persistence.*;
 import lombok.*;

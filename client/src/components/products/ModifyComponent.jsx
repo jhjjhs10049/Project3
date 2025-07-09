@@ -19,9 +19,8 @@ const host = API_SERVER_HOST;
 const ModifyComponent = ({ pno }) => {
   //결과 모달
   const [result, setResult] = useState(null);
-
   //이동용 함수
-  const { moveToRead, moveToList } = useCustomMove();
+  const { moveToProductRead, moveToProductList } = useCustomMove();
 
   const [product, setProduct] = useState(initState);
 
@@ -133,9 +132,9 @@ const ModifyComponent = ({ pno }) => {
   };
   const closeModal = () => {
     if (result === "Modified") {
-      moveToRead(pno); //조회 화면으로 이동
+      moveToProductRead(pno); //조회 화면으로 이동
     } else if (result === "소프트 삭제 완료" || result === "하드 삭제 완료") {
-      moveToList();
+      moveToProductList();
     }
   };
 
@@ -261,7 +260,7 @@ const ModifyComponent = ({ pno }) => {
         <button
           type="button"
           className="rounded p-4 m-2 text-x1 w-32 text-white bg-blue-500"
-          onClick={moveToList}
+          onClick={moveToProductList}
         >
           LIST
         </button>

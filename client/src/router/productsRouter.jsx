@@ -21,7 +21,7 @@ const productsRouter = () => {
     },
     {
       path: "", // '/products/' 경로를 호출할 때 자동으로 '/products/list'로 이동
-      element: <Navigate replace to="/products/list" />,
+      element: <Navigate replace to="/products/list?page=1&size=16" />,
     },
     {
       path: "add",

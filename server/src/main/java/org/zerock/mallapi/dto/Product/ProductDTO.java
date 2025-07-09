@@ -1,4 +1,4 @@
-package org.zerock.mallapi.dto;
+package org.zerock.mallapi.dto.Product;
 
 
 import lombok.AllArgsConstructor;

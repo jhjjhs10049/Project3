@@ -1,4 +1,4 @@
-package org.zerock.mallapi.service;
+package org.zerock.mallapi.service.Product;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -8,12 +8,12 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.zerock.mallapi.domain.Product;
-import org.zerock.mallapi.domain.ProductImage;
+import org.zerock.mallapi.domain.Product.Product;
+import org.zerock.mallapi.domain.Product.ProductImage;
 import org.zerock.mallapi.dto.PageRequestDTO;
 import org.zerock.mallapi.dto.PageResponseDTO;
-import org.zerock.mallapi.dto.ProductDTO;
-import org.zerock.mallapi.repository.ProductRepository;
+import org.zerock.mallapi.dto.Product.ProductDTO;
+import org.zerock.mallapi.repository.Product.ProductRepository;
 
 import java.util.List;
 import java.util.Optional;

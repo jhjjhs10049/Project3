@@ -17,8 +17,7 @@ const IndexPage = () => {
 
     return (
         //<></>
-        <BasicLayout>  
-            <div className="text-black font-extrabold -mt-10">Products Menu</div>
+        <BasicLayout>
             <div className="w-full flex m-2 p-2">
                 <div className="text-x1 m-1 p-2 w-20 font-extrabold text-center underline" onClick={handleClickList}>LIST</div>
                 <div className="text-x1 m-1 p-2 w-20 font-extrabold text-center underline" onClick={handleClickAdd}>ADD</div> 

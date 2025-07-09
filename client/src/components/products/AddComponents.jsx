@@ -34,7 +34,7 @@ const AddComponent = () => {
 
   const [result, setResult] = useState(false);
 
-  const { moveToList } = useCustomMove();
+  const { moveToProductList } = useCustomMove();
   const handleChangeProduct = (e) => {
     product[e.target.name] = e.target.value;
     setProduct({ ...product });
@@ -72,7 +72,7 @@ const AddComponent = () => {
     // result 도 마찬가지로 값이 바뀌면 리 렌더링을 할테고 true 이면 ResultModal 을 호출한다.
     // 94번 라인에 ResultModal 을  호출 하면서 callbackFn = {closeModal} 이 매개변수로 넘어간다.
     // ResultModal 에서 close modal 버튼을 누르면 closeModal() 이 호출되면서  ResultModal 이 종료 된다.
-    // 85번 라인에서 moveToList() 를 이용해서 /product/list/ 로 이동한다.
+    // 85번 라인에서 moveToProductList() 를 이용해서 /product/list/ 로 이동한다.
 
     setFetching(true);
     // postAdd() 가 비동기 함수 이므로 서버와의 통신이 끝났을때 false로 변경한다.
@@ -84,17 +84,17 @@ const AddComponent = () => {
 
   const closeModal = () => {
 
-    //moveToList()로 이동은 할텐데 ../list 경로를 처리하는 라우터가 2개다(productRouter 와 todoRouter)
-    //둘다 같은 경로 ../list를 처리하고 있는데 아래코드처럼 moveToList를 호출하면 어떻게
+    //moveToProductList()로 이동은 할텐데 ../list 경로를 처리하는 라우터가 2개다(productRouter 와 todoRouter)
+    //둘다 같은 경로 ../list를 처리하고 있는데 아래코드처럼 moveToProductList를 호출하면 어떻게
     //필요한 라우터를 찾아갈까?
-    //moveToList({page:1})가 호출될 때 어떤 “list” 라우터로 이동하는지는,
+    //moveToProductList({page:1})가 호출될 때 어떤 “list” 라우터로 이동하는지는,
     // 사용 중인 라우팅 구조—즉 컴포넌트가 현재 어떤 경로 아래에 렌더되고 있는지에 따라 달라집니다.
     // 현재 사용중인 컴포넌트(AddComponent)가 products 아래에서 렌더되고 있으니 productRouter을 찾아간다.
     // 구조를 한번 보자. 현재 상태는 product/indexPage/AddPage/AddComponent 이다.
     // root를 보면 /products 경로에 대한 라우터 처리를 하고있고
     // productRouter 에서 list 경로에 대한 처리를 하고 있다.
 
-    moveToList(); // 모달 창이 닫히면 리스트로 이동
+    moveToProductList(); // 모달 창이 닫히면 리스트로 이동
   };
 
   return (

@@ -1,8 +1,8 @@
-package org.zerock.mallapi.service;
+package org.zerock.mallapi.service.Product;
 
 import org.zerock.mallapi.dto.PageRequestDTO;
 import org.zerock.mallapi.dto.PageResponseDTO;
-import org.zerock.mallapi.dto.ProductDTO;
+import org.zerock.mallapi.dto.Product.ProductDTO;
 
 public interface ProductService {
     // 1. 단일 항목 조회 (GET)

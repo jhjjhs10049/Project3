@@ -1,12 +1,12 @@
-package org.zerock.mallapi.controller;
+package org.zerock.mallapi.controller.Todo;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.web.bind.annotation.*;
 import org.zerock.mallapi.dto.PageRequestDTO;
 import org.zerock.mallapi.dto.PageResponseDTO;
-import org.zerock.mallapi.dto.TodoDTO;
-import org.zerock.mallapi.service.TodoService;
+import org.zerock.mallapi.dto.Todo.TodoDTO;
+import org.zerock.mallapi.service.Todo.TodoService;
 
 import java.util.Map;
 

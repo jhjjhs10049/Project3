@@ -1,4 +1,4 @@
-package org.zerock.mallapi.service;
+package org.zerock.mallapi.service.Todo;
 
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
@@ -9,11 +9,11 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
-import org.zerock.mallapi.domain.Todo;
+import org.zerock.mallapi.domain.Todo.Todo;
 import org.zerock.mallapi.dto.PageRequestDTO;
 import org.zerock.mallapi.dto.PageResponseDTO;
-import org.zerock.mallapi.dto.TodoDTO;
-import org.zerock.mallapi.repository.TodoRepository;
+import org.zerock.mallapi.dto.Todo.TodoDTO;
+import org.zerock.mallapi.repository.Todo.TodoRepository;
 
 import java.util.List;
 import java.util.Optional;

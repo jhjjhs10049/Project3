@@ -4,11 +4,12 @@ import lombok.extern.log4j.Log4j2;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.zerock.mallapi.domain.Todo;
+import org.zerock.mallapi.domain.Todo.Todo;
 import org.zerock.mallapi.dto.PageRequestDTO;
 import org.zerock.mallapi.dto.PageResponseDTO;
-import org.zerock.mallapi.dto.TodoDTO;
-import org.zerock.mallapi.repository.TodoRepository;
+import org.zerock.mallapi.dto.Todo.TodoDTO;
+import org.zerock.mallapi.repository.Todo.TodoRepository;
+import org.zerock.mallapi.service.Todo.TodoService;
 
 import java.time.LocalDate;
 
