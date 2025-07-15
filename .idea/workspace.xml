@@ -5,35 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="2c48bfe2-ef22-4c7d-9b35-b78758ec1fec" name="변경" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/products/AddComponents.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/products/AddComponents.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/products/ListComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/products/ListComponent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/products/ModifyComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/products/ModifyComponent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/components/products/ReadComponent.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/products/ReadComponent.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/hooks/useCustomMove.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/hooks/useCustomMove.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/layouts/BasicLayout.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/layouts/BasicLayout.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/pages/products/IndexPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/pages/products/IndexPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/router/productsRouter.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/router/productsRouter.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/server/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/zerock/mallapi/config/CustomServletConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/zerock/mallapi/config/CustomServletConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/zerock/mallapi/config/RootConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/zerock/mallapi/config/RootConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/zerock/mallapi/controller/ProductController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/zerock/mallapi/controller/TodoController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/zerock/mallapi/domain/Product.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/zerock/mallapi/domain/ProductImage.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/zerock/mallapi/domain/Todo.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/zerock/mallapi/dto/ProductDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/zerock/mallapi/dto/TodoDTO.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/zerock/mallapi/repository/ProductRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/zerock/mallapi/repository/TodoRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/zerock/mallapi/service/ProductService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/zerock/mallapi/service/ProductServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/zerock/mallapi/service/TodoService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/zerock/mallapi/service/TodoServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/test/java/org/zerock/mallapi/repository/ProductRepositoryTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/test/java/org/zerock/mallapi/repository/ProductRepositoryTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/test/java/org/zerock/mallapi/repository/TodoRepositoryTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/test/java/org/zerock/mallapi/repository/TodoRepositoryTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/test/java/org/zerock/mallapi/service/ProductServiceTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/test/java/org/zerock/mallapi/service/ProductServiceTests.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/test/java/org/zerock/mallapi/service/TodoServiceTests.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/test/java/org/zerock/mallapi/service/TodoServiceTests.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/zerock/mallapi/security/filter/JWTCheckFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/zerock/mallapi/security/filter/JWTCheckFilter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/server/src/main/java/org/zerock/mallapi/security/handler/CustomAccessDeniedHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/main/java/org/zerock/mallapi/security/handler/CustomAccessDeniedHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +31,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Administrator/Desktop/GIT/Project3"
+    "last_opened_file_path": "C:/Users/Administrator/Desktop"
   }
 }]]></component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="애플리케이션 수준" UseSingleDictionary="true" transferred="true" />

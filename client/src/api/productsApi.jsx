@@ -1,17 +1,18 @@
-import axios from "axios";
 import { API_SERVER_HOST } from "./todoApi";
+import jwtAxios from "../util/JWTUtil";
+import axios from "axios";
 
 // http://localhost:8080/api/products
 const host = `${API_SERVER_HOST}/api/products`;
 
-// 1. 단일 항목 조회 (GET)
+// 1. 단일 항목 조회 (GET) - 로그인 불필요
 export const getOne = async (tno) => {
   // http://localhost:8080/api/products/${tno}
   const res = await axios.get(`${host}/${tno}`);
   return res.data;
 };
 
-// 2. 리스트 조회 (GET)
+// 2. 리스트 조회 (GET) - 로그인 불필요
 export const getList = async (pageParm) => {
   const { page, size } = pageParm;
 
@@ -31,7 +32,7 @@ export const postAdd = async (product) => {
   const header = { headers: { "Content-Type": "multipart/form-data" } };
 
   // 경로 뒤 '/' 주의
-  const res = await axios.post(`${host}/`, product, header);
+  const res = await jwtAxios.post(`${host}/`, product, header);
 
   return res.data;
 };
@@ -44,19 +45,19 @@ export const putOne = async (pno, product) => {
   const header = { headers: { "Content-Type": "multipart/form-data" } };
 
   // 경로 뒤 '/' 주의
-  const res = await axios.put(`${host}/${pno}`, product, header);
+  const res = await jwtAxios.put(`${host}/${pno}`, product, header);
 
   return res.data;
 };
 
 // 5-1. 논리 삭제 (SOFT DELETE)
 export const softDelete = async (pno) => {
-  const res = await axios.delete(`${host}/soft/${pno}`);
+  const res = await jwtAxios.delete(`${host}/soft/${pno}`);
   return res.data;
 };
 
 // 5-2. DB 삭제 (HARD DELETE)
 export const hardDelete = async (pno) => {
-  const res = await axios.delete(`${host}/hard/${pno}`);
+  const res = await jwtAxios.delete(`${host}/hard/${pno}`);
   return res.data;
 };

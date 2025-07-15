@@ -2,6 +2,7 @@ import { Suspense, lazy } from "react";
 import { createBrowserRouter } from "react-router-dom";
 import todoRouter from "./todoRouter";
 import productsRouter from "./productsRouter";
+import memberRouter from "./memberRouter";
 
 const Loading = <div>Loading....</div>;
 // lazy()를 사용하여 컴포넌트를 동적으로 import
@@ -10,7 +11,7 @@ const Main = lazy(() => import("../pages/MainPage"));
 const About = lazy(() => import("../pages/AboutPage"));
 const TodoIndex = lazy(() => import("../pages/todo/IndexPage"));
 const TodoList = lazy(() => import("../pages/todo/ListPage"));
-const ProductsIndex = lazy(() => import("../pages/products/IndexPage"))
+const ProductsIndex = lazy(() => import("../pages/products/IndexPage"));
 
 const root = createBrowserRouter([
   {
@@ -51,6 +52,10 @@ const root = createBrowserRouter([
       </Suspense>
     ),
     children: productsRouter(),
+  },
+  {
+    path: "member",
+    children: memberRouter(),
   },
 ]);
 

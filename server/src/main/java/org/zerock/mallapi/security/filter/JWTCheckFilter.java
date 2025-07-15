@@ -40,9 +40,7 @@ public class JWTCheckFilter extends OncePerRequestFilter {
         //Preflight 요청은 체크하지 않음
         if(request.getMethod().equals("OPTIONS")){
             return true;
-        }
-
-        String path = request.getRequestURI();
+        }        String path = request.getRequestURI();
 
         log.info("check uri.........." + path);
 
@@ -56,18 +54,30 @@ public class JWTCheckFilter extends OncePerRequestFilter {
             return true;
         }
 
+        // 상품 조회 API는 로그인 없이 허용
+        if(request.getMethod().equals("GET") && path.startsWith("/api/products/")){
+            return true;
+        }
+
+        // Todo 조회 API는 로그인 없이 허용
+        if(request.getMethod().equals("GET") && path.startsWith("/api/todo/")){
+            return true;
+        }
 
         return false;
-    }
-
-    @Override
+    }    @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         
         log.info("-------JWTCheckFilter----------------");
-
+        
         String authHeaderStr = request.getHeader("Authorization");
 
         try{
+            // Authorization 헤더가 없거나 Bearer로 시작하지 않으면 에러 처리
+            if (authHeaderStr == null || !authHeaderStr.startsWith("Bearer ")) {
+                throw new RuntimeException("Authorization header is missing or invalid");
+            }
+
             //Bearer accesstoken..
             // (Bearer 토큰) 형식인데 여기서 토큰만 필요 하다.
             // Bearer + 공백문자1칸 을 빼고 가져 와야 하므로
@@ -95,7 +105,7 @@ public class JWTCheckFilter extends OncePerRequestFilter {
             MemberDTO memberDTO = new MemberDTO(email, pw, nickname,
                     social.booleanValue(), roleNames);  //social 만써도 될거 같은데.. 나중에 테스트
 
-            log.info("------------------------");
+            log.info("------------------------");  
             log.info(memberDTO);
             log.info(memberDTO.getAuthorities());
 

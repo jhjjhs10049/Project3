@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { deleteOne, getOne, putOne } from "../../api/todoApi";
 import useCustomMove from "../../hooks/useCustomMove";
 import ResultModal from "../common/ResultModal";
+import useCustomLogin from "../../hooks/useCustomLogin";
 // 상세 정보를 조회, 사용자가 수정하거나 삭제할 수 있도록 입력 필드를 제공하며,
 // 처리 결과에 따라 모달을 표시하고 적절한 화면으로 이동하는 수정/삭제 전용 화면
 
@@ -19,12 +20,14 @@ const initState = {
 const ModifyComponent = ({ tno }) => {
   // initState를 사용하여 todo 상태를 초기화
   const [todo, setTodo] = useState({ ...initState });
-
   // 결과 메세지 즉, 모달 창을 위한 상태
   const [result, setResult] = useState(null);
 
   // 작업완료 후 이동경로 제어를 위한 기능
   const { moveToList, moveToRead } = useCustomMove();
+
+  // 로그인 상태 확인
+  const { isLogin } = useCustomLogin();
 
   // 컴포넌트가 마운트되거나 tno가 변경될 때 getOne() API를 호출하여 todo 데이터를 가져옴
   // getOne() API를 호출하여 tno에 해당하는 todo 항목을 가져와 todo 상태에 저장
@@ -87,7 +90,6 @@ const ModifyComponent = ({ tno }) => {
       ) : (
         <></>
       )}
-
       {/* 수정불가항목들 TNO, WRITER */}
       <div className="flex justify-center mt-10">
         <div className="relative mb-4 flex w-full flex-wrap items-stretch">
@@ -105,7 +107,6 @@ const ModifyComponent = ({ tno }) => {
           </div>
         </div>
       </div>
-
       {/* 수정가능항목 TITLE, DUEDATE */}
       <div className="flex justify-center">
         <div className="relative mb-4 flex w-full flex-wrap items-stretch">
@@ -131,7 +132,6 @@ const ModifyComponent = ({ tno }) => {
           ></input>
         </div>
       </div>
-
       {/* 완료 여부 표시기능 (실제로는 안쓸것 같음...) */}
       <div className="flex justify-center">
         <div className="relative mb-4 flex w-full flex-wrap items-stretch">
@@ -146,23 +146,34 @@ const ModifyComponent = ({ tno }) => {
             <option value={"N"}>Not Yet</option>
           </select>
         </div>
-      </div>
-
+      </div>{" "}
       {/* 버튼 */}
       <div className="flex justify-end p-4">
-        <button
-          type="button"
-          className="rounded p-4 m-2 text-x1 w-32 text-white bg-red-500"
-          onClick={handleClickDelete}
-        >
-          Delete
-        </button>
+        {/* 로그인한 사용자에게만 Delete와 Modify 버튼 표시 */}
+        {isLogin && (
+          <>
+            <button
+              type="button"
+              className="rounded p-4 m-2 text-x1 w-32 text-white bg-red-500"
+              onClick={handleClickDelete}
+            >
+              Delete
+            </button>
+            <button
+              type="button"
+              className="inline-block rounded p-4 m-2 text-xl w-32 text-white bg-orange-500"
+              onClick={handleClickedModify}
+            >
+              Modify
+            </button>
+          </>
+        )}
         <button
           type="button"
           className="rounded p-4 m-2 text-x1 w-32 text-white bg-blue-500"
-          onClick={handleClickedModify}
+          onClick={() => moveToList()}
         >
-          Modify
+          List
         </button>
       </div>
     </div>

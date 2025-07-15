@@ -22,7 +22,7 @@ public class CustomAccessDeniedHandler implements AccessDeniedHandler {
 
         //유효 기간이 지나지 않았지만 권한이 없는 사용자가 가진 Access Token 을 사용하는 경우
         //에러 메세지 전송 코드
-        String jsonStr = gson.toJson(Map.of("error", "ERROR_ACCESSDENIED"));
+        String jsonStr = gson.toJson(Map.of("error", "ERROR_      "));
 
         response.setContentType("application/json");
         response.setStatus(HttpStatus.FORBIDDEN.value());

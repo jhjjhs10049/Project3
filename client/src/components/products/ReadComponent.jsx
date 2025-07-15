@@ -3,6 +3,7 @@ import { getOne } from "../../api/productsApi";
 import { API_SERVER_HOST } from "../../api/todoApi";
 import useCustomMove from "../../hooks/useCustomMove";
 import FetchingModal from "../common/FetchingModal";
+import useCustomLogin from "../../hooks/useCustomLogin";
 
 const initState = {
   pno: 0,
@@ -17,6 +18,9 @@ const host = API_SERVER_HOST;
 const ReadComponent = ({ pno }) => {
   const [product, setProduct] = useState(initState); //화면 이동용 함수
   const { moveToProductList, moveToProductModify } = useCustomMove();
+
+  // 로그인 상태 확인
+  const { isLogin } = useCustomLogin();
 
   //FetchingModal 을 보여줄지 여부
   const [fetching, setFetching] = useState(false);
@@ -75,16 +79,19 @@ const ReadComponent = ({ pno }) => {
             className="p-4 w-1/2"
             src={`${host}/api/products/view/${imgFile}`}
           />
-        ))}
+        ))}{" "}
       </div>{" "}
       <div className="flex justify-end p-4">
-        <button
-          type="button"
-          className="inline=block rounded p-4 m-2 text-xl w-32 text-white bg-red-500"
-          onClick={() => moveToProductModify(pno)}
-        >
-          Modify
-        </button>
+        {/* 로그인한 사용자에게만 Modify 버튼 표시 */}
+        {isLogin && (
+          <button
+            type="button"
+            className="inline=block rounded p-4 m-2 text-xl w-32 text-white bg-red-500"
+            onClick={() => moveToProductModify(pno)}
+          >
+            Modify
+          </button>
+        )}
 
         <button
           type="button"

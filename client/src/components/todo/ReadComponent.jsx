@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { getOne } from "../../api/todoApi";
 import useCustomMove from "../../hooks/useCustomMove";
+import useCustomLogin from "../../hooks/useCustomLogin";
 // tno에 해당하는 할 일 데이터를 API로 불러와 제목과 값을 분리해 화면에 보여주고,
 // 목록 및 수정 페이지로 이동하는 버튼을 제공하는 상세 조회 컴포넌트
 
@@ -22,6 +23,9 @@ const ReadComponent = ({ tno }) => {
   // 커스텀 훅 useCustomMove에서 목록 페이지로 이동하는 함수 moveToList와 수정 페이지로 이동하는 함수 moveToModify를 받아옴
   const { moveToList, moveToModify } = useCustomMove();
 
+  // 로그인 상태 확인
+  const { isLogin } = useCustomLogin();
+
   // 컴포넌트가 마운트되거나 tno가 변경될 때 getOne() API를 호출하여 todo 데이터를 가져옴
   // useEffect 훅은 내장 훅으로 의존성 배열에 있는 값이 바뀔 때마다 다시 실행됨
   // useEffect 훅을 사용하여 tno가 변경될 때마다 해당 Todo 항목의 데이터를 가져옴
@@ -41,23 +45,25 @@ const ReadComponent = ({ tno }) => {
       {makeDiv("Writer", todo.writer)}
       {makeDiv("Title", todo.title)}
       {makeDiv("Due Date", todo.dueDate)}
-      {makeDiv("Complete", todo.complete ? "Completed" : "Not Yet")}
-
+      {makeDiv("Complete", todo.complete ? "Completed" : "Not Yet")}{" "}
       {/* 버튼 */}
       <div className="flex justify-end p-4">
+        {/* 로그인한 사용자에게만 Modify 버튼 표시 */}
+        {isLogin && (
+          <button
+            type="button"
+            className="rounded p-4 m-2 text-xl w-32 text-white bg-red-500"
+            onClick={() => moveToModify(tno)}
+          >
+            Modify
+          </button>
+        )}
         <button
           type="button"
           className="rounded p-4 m-2 text-xl w-32 text-white bg-blue-500"
           onClick={() => moveToList()}
         >
           List
-        </button>
-        <button
-          type="button"
-          className="rounded p-4 m-2 text-xl w-32 text-white bg-red-500"
-          onClick={() => moveToModify(tno)}
-        >
-          Modify
         </button>
       </div>
     </div>

@@ -1,10 +1,14 @@
 import { Outlet, useNavigate } from "react-router-dom";
 import BasicLayout from "../../layouts/BasicLayout";
 import { useCallback } from "react";
+import useCustomLogin from "../../hooks/useCustomLogin";
 
 const IndexPage = () => {
   // useNavigate 훅을 사용하여 페이지 이동 기능을 구현
   const navigate = useNavigate();
+
+  // 로그인 상태 확인
+  const { isLogin } = useCustomLogin();
 
   // handleClickList 함수는 "list" 경로로 이동
   const handleClickList = useCallback(() => {
@@ -34,6 +38,7 @@ const IndexPage = () => {
     // 내부에 두 개의 버튼을 배치하여 각각 "LIST"와 "ADD" 기능을 제공
     // 버튼 클릭 시 해당 경로로 이동
     <BasicLayout>
+      {" "}
       <div className="w-full flex m-2 p-2">
         <div
           className="text-x1 m-1 p-2 w-20 font-extrabold text-center underline"
@@ -41,12 +46,15 @@ const IndexPage = () => {
         >
           LIST
         </div>
-        <div
-          className="text-x1 m-1 p-2 w-20 font-extrabold text-center underline"
-          onClick={handleClickAdd}
-        >
-          ADD
-        </div>
+        {/* 로그인한 사용자에게만 ADD 버튼 표시 */}
+        {isLogin && (
+          <div
+            className="text-x1 m-1 p-2 w-20 font-extrabold text-center underline"
+            onClick={handleClickAdd}
+          >
+            ADD
+          </div>
+        )}
       </div>
       <div className="flex flex-wrap w-full">
         <Outlet />
