@@ -34,13 +34,12 @@ public class JWTCheckFilter extends OncePerRequestFilter {
         //1. 요청 메서드가 GET, POST, HEAD 가 아닌 경우 (예: PUT, DELETE, PATCH)
         //2.Content-Type 이 application/x-www-form-urlencoded, multipart/form-data, text/plain 이외인 경우 (예: application/json)
         //3.커스텀 헤더가 포함된 경우 (예: Authorization, X-Custom-Header)
-        //4.요청에 credentials 포함 시 (쿠키, 인증 헤더)
-
-
-        //Preflight 요청은 체크하지 않음
+        //4.요청에 credentials 포함 시 (쿠키, 인증 헤더)        //Preflight 요청은 체크하지 않음
         if(request.getMethod().equals("OPTIONS")){
             return true;
-        }        String path = request.getRequestURI();
+        }
+
+        String path = request.getRequestURI();
 
         log.info("check uri.........." + path);
 
@@ -49,18 +48,15 @@ public class JWTCheckFilter extends OncePerRequestFilter {
             return true;
         }
 
+        // Todo와 Products의 GET 요청(조회)은 로그인 없이 허용
+        if(request.getMethod().equals("GET")) {
+            if(path.startsWith("/api/todo/") || path.startsWith("/api/products/")) {
+                return true;
+            }
+        }
+
         //이미지 조회 경로는 체크하지 않는다
         if(path.startsWith("/api/products/view/")){
-            return true;
-        }
-
-        // 상품 조회 API는 로그인 없이 허용
-        if(request.getMethod().equals("GET") && path.startsWith("/api/products/")){
-            return true;
-        }
-
-        // Todo 조회 API는 로그인 없이 허용
-        if(request.getMethod().equals("GET") && path.startsWith("/api/todo/")){
             return true;
         }
 

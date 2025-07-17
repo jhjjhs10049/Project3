@@ -27,7 +27,7 @@ const prefix = `${API_SERVER_HOST}/api/todo`; //prefix는 모든 요청 URL의 �
 // tno는 ListComponent.jsx의 onClick={() => moveToRead(todo.tno)} 실행시 만들어지며, 클릭한 해당 Todo 항목의 tno를 전달받음
 export const getOne = async (tno) => {
   // "http://localhost:8080/api/todo/1" 형태의 URL로 요청을 보내고,
-  const res = await axios.get(`${prefix}/${tno}`); // ← axios로 TodoController 호출
+  const res = await axios.get(`${prefix}/${tno}`); // ← axios로 TodoController 호출 (JWT 토큰 불필요)
   // 응답으로 받은 데이터를 반환
   return res.data;
 };
@@ -43,7 +43,7 @@ export const getList = async (pageParam) => {
   const { page, size } = pageParam;
   // axios는 이 params 객체를 자동으로 ?page=...&size=... 쿼리스트링으로 변환해줌
   const res = await axios.get(`${prefix}/list`, {
-    // ← axios로 TodoController 호출
+    // ← axios로 TodoController 호출 (JWT 토큰 불필요)
     params: { page: page, size: size },
   });
   return res.data;
