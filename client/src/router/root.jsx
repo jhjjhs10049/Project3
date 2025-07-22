@@ -12,6 +12,7 @@ const About = lazy(() => import("../pages/AboutPage"));
 const TodoIndex = lazy(() => import("../pages/todo/IndexPage"));
 const TodoList = lazy(() => import("../pages/todo/ListPage"));
 const ProductsIndex = lazy(() => import("../pages/products/IndexPage"));
+const ShoppingCart = lazy(() => import("../pages/shoppingCart/CartPage"));
 
 const root = createBrowserRouter([
   {
@@ -56,6 +57,15 @@ const root = createBrowserRouter([
   {
     path: "member",
     children: memberRouter(),
+  },
+  {
+    // shoppingCart → ShoppingCart 컴포넌트를 렌더링
+    path: "shoppingCart",
+    element: (
+      <Suspense fallback={Loading}>
+        <ShoppingCart />
+      </Suspense>
+    ),
   },
 ]);
 

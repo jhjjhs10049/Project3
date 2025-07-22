@@ -86,7 +86,7 @@ const useCustomMove = () => {
     navigate({ pathname: `../list`, search: queryStr });
   };
 
-  // Product 전용 리스트 페이지로 이동 (size=16 사용)
+  // Product 전용 리스트 페이지로 이동
   const moveToProductList = (pageParam) => {
     let queryStr = "";
 
@@ -99,7 +99,7 @@ const useCustomMove = () => {
         size: sizeNum,
       }).toString();
     } else {
-      // Product용 기본 쿼리 (size=16)
+      // Product용 기본 쿼리
       queryStr = createSearchParams({
         page: PAGE_CONSTANTS.DEFAULT_PAGE,
         size: PAGE_CONSTANTS.PRODUCT_SIZE,

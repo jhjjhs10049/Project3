@@ -4,6 +4,8 @@ import { API_SERVER_HOST } from "../../api/todoApi";
 import useCustomMove from "../../hooks/useCustomMove";
 import FetchingModal from "../common/FetchingModal";
 import useCustomLogin from "../../hooks/useCustomLogin";
+import useCustomCart from "../../hooks/useCustomCart";
+import { useNavigate } from "react-router-dom";
 
 const initState = {
   pno: 0,
@@ -16,14 +18,53 @@ const initState = {
 const host = API_SERVER_HOST;
 
 const ReadComponent = ({ pno }) => {
-  const [product, setProduct] = useState(initState); //화면 이동용 함수
-  const { moveToProductList, moveToProductModify } = useCustomMove();
+  const [product, setProduct] = useState(initState);
 
-  // 로그인 상태 확인
-  const { isLogin } = useCustomLogin();
+  //화면 이동용 함수
+  const { moveToProductList, moveToProductModify } = useCustomMove();
+  const navigate = useNavigate();
 
   //FetchingModal 을 보여줄지 여부
-  const [fetching, setFetching] = useState(false);
+  const [fetching, setFetching] = useState(false); // 로그인 상태 확인
+  const { isLogin, loginState, moveToLogin } = useCustomLogin();
+  //장바구니 기능
+  const { changeCart, cartItems } = useCustomCart();
+  const handleClickAddCart = () => {
+    // 로그인 체크
+    if (!isLogin) {
+      alert("로그인이 필요한 서비스입니다.");
+      moveToLogin(); // 로그인 페이지로 이동
+      return;
+    }
+
+    let qty = 1;
+
+    //item 은 cartItems 의 요소(엘리먼트) 입니다.
+    //parseInt(pno) 에서 pno 는 ReadComponent = ({pno}) 입니다.
+    //filter() 를 사용해서 true 인 요소만 통과 시킨다.(pno가 문자열 일수도 있기 때문에 parseInt 를 사용해서 정수로 변환합니다.)
+    //통과한 요소들 중에 0번째 요소를 찾는다.
+    const addedItem = cartItems.filter((item) => item.pno === parseInt(pno))[0];
+
+    if (addedItem) {
+      //추가된 적이 있는 상품 이라면
+      if (
+        window.confirm("이미 추가된 상품입니다. 추가 하시겠습니까? ") === false
+      ) {
+        return; //추가 하지 않으면 return
+      }
+      qty = addedItem.qty + 1; //추가 한다면 + 1
+    }
+
+    // 장바구니에 상품 추가
+    changeCart({ email: loginState.email, pno: pno, qty: qty });
+
+    // 추가 완료 후 이동 확인
+    if (
+      window.confirm("장바구니에 추가되었습니다. 장바구니로 이동하시겠습니까?")
+    ) {
+      navigate("/shoppingCart");
+    }
+  };
 
   // products/AddComponent 에 있는 setFetching 과 postAdd() 부분의 주석을 참조하세요.
   useEffect(() => {
@@ -82,6 +123,13 @@ const ReadComponent = ({ pno }) => {
         ))}{" "}
       </div>{" "}
       <div className="flex justify-end p-4">
+        <button
+          type="button"
+          className="inline-block rounded p-4 m-2 text-xl w-32 text-white bg-green-500"
+          onClick={handleClickAddCart}
+        >
+          Add Cart {/* 장바구니에 상품 추가하기 */}
+        </button>
         {/* 로그인한 사용자에게만 Modify 버튼 표시 */}
         {isLogin && (
           <button

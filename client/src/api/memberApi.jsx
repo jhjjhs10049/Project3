@@ -21,6 +21,14 @@ export const loginPost = async (loginParam) => {
   return res.data;
 };
 
+export const joinPost = async (joinParam) => {
+  const header = { headers: { "Content-Type": "application/json" } };
+
+  const res = await axios.post(`${host}/join`, joinParam, header);
+
+  return res.data;
+};
+
 export const modifyMember = async (member) => {
   const res = await jwtAxios.put(`${host}/modify`, member);
   return res.data;

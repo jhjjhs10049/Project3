@@ -14,7 +14,7 @@ const initState = {
   prev: false,
   next: false,
   totalCount: 0,
-  prePage: 0, //이전 페이지 번호, 0 이면 이전 페이지가 없거나 초기 상태 일때 0
+  prevPage: 0, 
   nextPage: 0,
   totalPage: 0,
   current: 0,

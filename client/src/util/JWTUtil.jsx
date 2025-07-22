@@ -107,7 +107,7 @@ const beforeRes = async (res) => {
     memberCookieValue.refreshToken = result.refreshToken;
 
     //JSON.stringify : 자바스크립트 객체를 문자열형태(JSON) 로 만든다.
-    setCookie("member", JSON.stringify(memberCookieValue));
+    setCookie("member", JSON.stringify(memberCookieValue), 1);
 
     //원래의 호출(getOne, getList)
     const originalResult = res.config; //응답 객체(res)에 포함된 원래 요청 설정(config) 을 참조한다.

@@ -1,5 +1,6 @@
 import { Suspense, lazy } from "react";
 import { Navigate } from "react-router-dom";
+import { PAGE_CONSTANTS } from "../constants/pageConstants.jsx";
 
 const productsRouter = () => {
   const Loading = <div>Loading....</div>;
@@ -21,7 +22,12 @@ const productsRouter = () => {
     },
     {
       path: "", // '/products/' 경로를 호출할 때 자동으로 '/products/list'로 이동
-      element: <Navigate replace to="/products/list?page=1&size=16" />,
+      element: (
+        <Navigate
+          replace
+          to={`/products/list?page=${PAGE_CONSTANTS.DEFAULT_PAGE}&size=${PAGE_CONSTANTS.PRODUCT_SIZE}`}
+        />
+      ),
     },
     {
       path: "add",
